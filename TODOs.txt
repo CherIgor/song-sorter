@@ -1,0 +1,13 @@
+TODO list tasks examples:
+
++ Task that is already done.
+- Task that will not be done.
+  Task that should be done.
+? Do we need to do this task?
+
+TODO list:
+
+  Set icon "MP3_2.ico" to resulting .exe file.
+  Record demo video about the application use cases.
+  Create .docx documentation/user guide.
+  
