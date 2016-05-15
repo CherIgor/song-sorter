@@ -416,7 +416,7 @@ namespace SongSorter
 
         private void CleanNumbers()
         {
-            const string numberPattern = @"^[\d\s\+\.\-_–=~,`'#]*";
+            const string numberPattern = @"^[\d\s\+\.\-\[\]\(\)_–=~,`'#]*";
 
             if (_sourceFiles == null)
             {
