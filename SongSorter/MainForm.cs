@@ -91,6 +91,7 @@ namespace SongSorter
             }
 
             ResetSourceList();
+            SetInitialSorting();
         }
 
         private void btnOpenSourceFolder_Click(object sender, EventArgs e)
@@ -394,11 +395,20 @@ namespace SongSorter
             }
         }
 
+        private void SetInitialSorting()
+        {
+            _columnSorting = ColumnSorting.None;
+            // 1 means "Original file name" column
+            SortByColumn(1);
+        }
+
         private void Resort()
         {
             if (_columnSorting != ColumnSorting.None)
             {
                 var colIndex = ((int)_columnSorting - 1) / 2;
+
+                // Do it twice to keep the same ordering direction (asc/desc)
                 SortByColumn(colIndex);
                 SortByColumn(colIndex);
             }
@@ -406,7 +416,7 @@ namespace SongSorter
 
         private void CleanNumbers()
         {
-            const string numberPattern = @"^\d+[\s_\-–|=~]*";
+            const string numberPattern = @"^[\d\s\+\.\-_–=~,`'#]*";
 
             if (_sourceFiles == null)
             {
@@ -675,11 +685,7 @@ namespace SongSorter
 
         #endregion
 
-        private List<FileModel> _sourceFilesAll;
-        private List<FileModel> _sourceFiles;
-        private string _folderPath;
-        private bool _needFolderReopen;
-        private ColumnSorting _columnSorting = ColumnSorting.None;
+        #region  Private definitions
 
         private enum ColumnSorting
         {
@@ -692,7 +698,19 @@ namespace SongSorter
             AfterFileNameDesc = 6,
         }
 
+        #endregion
+
+        #region  Private fields
+
+        private List<FileModel> _sourceFilesAll;
+        private List<FileModel> _sourceFiles;
+        private string _folderPath;
+        private bool _needFolderReopen;
+        private ColumnSorting _columnSorting = ColumnSorting.None;
+
         private int _foldersCntProcessed;
         private int _filesCntProcessed;
+
+        #endregion
     }
 }
