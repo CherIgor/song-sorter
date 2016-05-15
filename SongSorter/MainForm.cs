@@ -37,53 +37,58 @@ namespace SongSorter
 
         private void btnSelectSourceFolder_Click(object sender, EventArgs e)
         {
+            if (folderDialog.ShowDialog() == DialogResult.OK)
+            {
+                OpenSourceFolder();
+            }
+        }
+
+        private void OpenSourceFolder()
+        {
             try
             {
-                if (folderDialog.ShowDialog() == DialogResult.OK)
+                var folderPath = folderDialog.SelectedPath;
+                if (!Directory.Exists(folderPath))
                 {
-                    var folderPath = folderDialog.SelectedPath;
-                    if (!Directory.Exists(folderPath))
-                    {
-                        MessageBox.Show(string.Format("Папка {0} не найдена!", folderPath), @"Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
-
-                    var files = Directory.GetFiles(folderPath);
-                    var sourceFiles = new List<FileModel>(files.Length);
-                    foreach (var filePath in files)
-                    {
-                        var beforefileName = Path.GetFileName(filePath);
-                        bool isSystemOrHidden;
-                        try
-                        {
-                            var attributes = File.GetAttributes(filePath);
-                            isSystemOrHidden = (attributes & (FileAttributes.System | FileAttributes.Hidden)) != 0;
-                        }
-                        catch
-                        {
-                            continue;
-                        }
-
-                        var fileModel = new FileModel
-                        {
-                            BeforeFilePath = filePath,
-                            BeforeFileName = beforefileName,
-                            AfterFileName = beforefileName,
-                            IsSystemOrHidden = isSystemOrHidden,
-                        };
-                        var extension = Path.GetExtension(filePath);
-                        if (!string.IsNullOrWhiteSpace(extension) && string.Compare(extension, Mp3Extension, StringComparison.InvariantCultureIgnoreCase) == 0)
-                        {
-                            fileModel.IsSelected = true;
-                        }
-                        sourceFiles.Add(fileModel);
-                    }
-
-                    lblSourceFolder.Text = folderPath;
-                    _folderPath = folderPath;
-                    _sourceFilesAll = sourceFiles.OrderBy(x => x.BeforeFileName).ToList();
-                    _needFolderReopen = false;
+                    MessageBox.Show(string.Format("Папка {0} не найдена!", folderPath), @"Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
                 }
+
+                var files = Directory.GetFiles(folderPath);
+                var sourceFiles = new List<FileModel>(files.Length);
+                foreach (var filePath in files)
+                {
+                    var beforefileName = Path.GetFileName(filePath);
+                    bool isSystemOrHidden;
+                    try
+                    {
+                        var attributes = File.GetAttributes(filePath);
+                        isSystemOrHidden = (attributes & (FileAttributes.System | FileAttributes.Hidden)) != 0;
+                    }
+                    catch
+                    {
+                        continue;
+                    }
+
+                    var fileModel = new FileModel
+                    {
+                        BeforeFilePath = filePath,
+                        BeforeFileName = beforefileName,
+                        AfterFileName = beforefileName,
+                        IsSystemOrHidden = isSystemOrHidden,
+                    };
+                    var extension = Path.GetExtension(filePath);
+                    if (!string.IsNullOrWhiteSpace(extension) && string.Compare(extension, Mp3Extension, StringComparison.InvariantCultureIgnoreCase) == 0)
+                    {
+                        fileModel.IsSelected = true;
+                    }
+                    sourceFiles.Add(fileModel);
+                }
+
+                lblSourceFolder.Text = folderPath;
+                _folderPath = folderPath;
+                _sourceFilesAll = sourceFiles.OrderBy(x => x.BeforeFileName).ToList();
+                _needFolderReopen = false;
             }
             catch (Exception ex)
             {
@@ -205,7 +210,7 @@ namespace SongSorter
                     MessageBox.Show(@"Файлы переименованы успешно!", @"Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
-                // Для обязания пользователя снова выбрать папку
+                // To force user reselect a folder
                 _needFolderReopen = true;
 
                 EnableControls();
@@ -240,6 +245,8 @@ namespace SongSorter
             var fileCount = DeleteHiddenFiles(_folderPath, chbxDeleteFilesInSubfolders.Checked);
             MessageBox.Show(string.Format("Удалено скрытых файлов: {0}", fileCount), @"Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
             StopProgress();
+
+            OpenSourceFolder();
         }
 
         private void dgvFiles_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -286,11 +293,8 @@ namespace SongSorter
             btnClearNames.Enabled = btnSequentualNames.Enabled = btnRandomNames.Enabled = hasAnySourceFiles && !needFolderReopen;
             btnRenameFiles.Enabled = hasCheckedSourceFiles && !needFolderReopen;
 
-            btnReplaceFileProperties.Enabled = hasSourceFolderPath;
-            chbxReplacePropertiesInSubfolders.Enabled = hasSourceFolderPath;
-
-            btnDeleteHiddenFiles.Enabled = hasSourceFolderPath;
-            chbxDeleteFilesInSubfolders.Enabled = hasSourceFolderPath;
+            btnReplaceFileProperties.Enabled = chbxReplacePropertiesInSubfolders.Enabled = hasSourceFolderPath && !needFolderReopen;
+            btnDeleteHiddenFiles.Enabled = chbxDeleteFilesInSubfolders.Enabled = hasSourceFolderPath && !needFolderReopen;
         }
 
         private void EnableRenameButton()
@@ -341,7 +345,8 @@ namespace SongSorter
 
         private void SortByColumn(int columnIndex)
         {
-            // Символы для указания сортировки ↑↓
+            // Ascending/descending order by special characters: ↑↓.
+
             if (_sourceFiles == null || !_sourceFiles.Any())
             {
                 return;
