@@ -7,8 +7,6 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
-using TagLib;
-
 using SongSorter.Model;
 
 using File = System.IO.File;
@@ -352,6 +350,8 @@ namespace SongSorter
                 return;
             }
 
+            ResetSortingDisplay();
+
             if (_columnSorting != ColumnSorting.None)
             {
                 var colIndex = ((int)_columnSorting - 1) / 2;
@@ -400,9 +400,21 @@ namespace SongSorter
             }
         }
 
+        private void ResetSortingDisplay()
+        {
+            if (_columnSorting != ColumnSorting.None)
+            {
+                var colIndex = ((int)_columnSorting - 1) / 2;
+                var col = dgvFiles.Columns[colIndex];
+                col.HeaderText = col.HeaderText.TrimEnd(SortArrowAsc, SortArrowDesc, ' ');
+            }
+        }
+
         private void SetInitialSorting()
         {
+            ResetSortingDisplay();
             _columnSorting = ColumnSorting.None;
+
             // 1 means "Original file name" column
             SortByColumn(1);
         }
@@ -430,7 +442,8 @@ namespace SongSorter
 
             var regex = new Regex(numberPattern);
 
-            foreach (var fileModel in _sourceFiles)
+            var selectedSourceFiles = _sourceFiles.Where(x => x.IsSelected).ToList();
+            foreach (var fileModel in selectedSourceFiles)
             {
                 var beforeName = fileModel.BeforeFileName;
                 if (string.IsNullOrWhiteSpace(beforeName))
