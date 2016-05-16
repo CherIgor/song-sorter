@@ -460,7 +460,7 @@
             this.MinimumSize = new System.Drawing.Size(1040, 605);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Сортировщик .mp3 и других файлов (v.1.0.5) by Igor Cheremushkin, Taganrog, Russia" +
+            this.Text = "Сортировщик .mp3 и других файлов (v.1.1.1) by Igor Cheremushkin, Taganrog, Russia" +
     "";
             this.Shown += new System.EventHandler(this.MainForm_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvFiles)).EndInit();
