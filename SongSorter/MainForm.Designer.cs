@@ -32,15 +32,16 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.btnSelectSourceFolder = new System.Windows.Forms.Button();
             this.folderDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.dgvFiles = new System.Windows.Forms.DataGridView();
-            this.isSelectedDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.beforeFileNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.afterFileNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bsSourceFiles = new System.Windows.Forms.BindingSource(this.components);
             this.pnlForControls = new System.Windows.Forms.Panel();
+            this.btnRemoveCharsInFileNames = new System.Windows.Forms.Button();
+            this.chbxRemoveCharsInSubfolders = new System.Windows.Forms.CheckBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.tbxCharsToRemove = new System.Windows.Forms.TextBox();
             this.chbxReplacePropertiesInSubfolders = new System.Windows.Forms.CheckBox();
             this.btnReplaceFileProperties = new System.Windows.Forms.Button();
             this.btnRenameFiles = new System.Windows.Forms.Button();
@@ -63,13 +64,17 @@
             this.pnlForTable = new System.Windows.Forms.Panel();
             this.pnlProgress = new System.Windows.Forms.Panel();
             this.tbxProgress = new System.Windows.Forms.TextBox();
+            this.isSelectedDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.beforeFileNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.afterFileNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bsSourceFiles = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvFiles)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsSourceFiles)).BeginInit();
             this.pnlForControls.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudStartFromNumber)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudDigitsCount)).BeginInit();
             this.pnlForTable.SuspendLayout();
             this.pnlProgress.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bsSourceFiles)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSelectSourceFolder
@@ -107,60 +112,41 @@
             this.beforeFileNameDataGridViewTextBoxColumn,
             this.afterFileNameDataGridViewTextBoxColumn});
             this.dgvFiles.DataSource = this.bsSourceFiles;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvFiles.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvFiles.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvFiles.Location = new System.Drawing.Point(0, 0);
             this.dgvFiles.MultiSelect = false;
             this.dgvFiles.Name = "dgvFiles";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvFiles.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvFiles.RowHeadersWidth = 30;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvFiles.RowsDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvFiles.Size = new System.Drawing.Size(1084, 455);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvFiles.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvFiles.RowHeadersWidth = 30;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvFiles.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvFiles.Size = new System.Drawing.Size(1178, 455);
             this.dgvFiles.TabIndex = 0;
             this.dgvFiles.TabStop = false;
             this.dgvFiles.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvFiles_ColumnHeaderMouseClick);
             this.dgvFiles.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFiles_RowEnter);
             // 
-            // isSelectedDataGridViewCheckBoxColumn
-            // 
-            this.isSelectedDataGridViewCheckBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.isSelectedDataGridViewCheckBoxColumn.DataPropertyName = "IsSelected";
-            this.isSelectedDataGridViewCheckBoxColumn.HeaderText = "Выбрано";
-            this.isSelectedDataGridViewCheckBoxColumn.Name = "isSelectedDataGridViewCheckBoxColumn";
-            this.isSelectedDataGridViewCheckBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.isSelectedDataGridViewCheckBoxColumn.Width = 91;
-            // 
-            // beforeFileNameDataGridViewTextBoxColumn
-            // 
-            this.beforeFileNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.beforeFileNameDataGridViewTextBoxColumn.DataPropertyName = "BeforeFileName";
-            this.beforeFileNameDataGridViewTextBoxColumn.HeaderText = "Исходное имя";
-            this.beforeFileNameDataGridViewTextBoxColumn.Name = "beforeFileNameDataGridViewTextBoxColumn";
-            this.beforeFileNameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.beforeFileNameDataGridViewTextBoxColumn.Width = 115;
-            // 
-            // afterFileNameDataGridViewTextBoxColumn
-            // 
-            this.afterFileNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.afterFileNameDataGridViewTextBoxColumn.DataPropertyName = "AfterFileName";
-            this.afterFileNameDataGridViewTextBoxColumn.HeaderText = "Новое имя";
-            this.afterFileNameDataGridViewTextBoxColumn.Name = "afterFileNameDataGridViewTextBoxColumn";
-            this.afterFileNameDataGridViewTextBoxColumn.Width = 96;
-            // 
-            // bsSourceFiles
-            // 
-            this.bsSourceFiles.AllowNew = false;
-            this.bsSourceFiles.DataSource = typeof(SongSorter.Model.FileModel);
-            // 
             // pnlForControls
             // 
+            this.pnlForControls.Controls.Add(this.btnRemoveCharsInFileNames);
+            this.pnlForControls.Controls.Add(this.chbxRemoveCharsInSubfolders);
+            this.pnlForControls.Controls.Add(this.label4);
+            this.pnlForControls.Controls.Add(this.tbxCharsToRemove);
             this.pnlForControls.Controls.Add(this.chbxReplacePropertiesInSubfolders);
             this.pnlForControls.Controls.Add(this.btnReplaceFileProperties);
             this.pnlForControls.Controls.Add(this.btnRenameFiles);
@@ -184,15 +170,63 @@
             this.pnlForControls.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlForControls.Location = new System.Drawing.Point(0, 455);
             this.pnlForControls.Name = "pnlForControls";
-            this.pnlForControls.Size = new System.Drawing.Size(1084, 178);
+            this.pnlForControls.Size = new System.Drawing.Size(1178, 178);
             this.pnlForControls.TabIndex = 0;
             this.pnlForControls.Enter += new System.EventHandler(this.pnlForControls_Enter);
+            // 
+            // btnRemoveCharsInFileNames
+            // 
+            this.btnRemoveCharsInFileNames.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoveCharsInFileNames.Location = new System.Drawing.Point(540, 89);
+            this.btnRemoveCharsInFileNames.Name = "btnRemoveCharsInFileNames";
+            this.btnRemoveCharsInFileNames.Size = new System.Drawing.Size(200, 63);
+            this.btnRemoveCharsInFileNames.TabIndex = 20;
+            this.btnRemoveCharsInFileNames.Text = "Стереть символы в названиях файлов в выбранной папке";
+            this.btnRemoveCharsInFileNames.UseVisualStyleBackColor = true;
+            this.btnRemoveCharsInFileNames.Click += new System.EventHandler(this.btnRemoveCharsInFileNames_Click);
+            // 
+            // chbxRemoveCharsInSubfolders
+            // 
+            this.chbxRemoveCharsInSubfolders.AutoSize = true;
+            this.chbxRemoveCharsInSubfolders.Checked = true;
+            this.chbxRemoveCharsInSubfolders.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chbxRemoveCharsInSubfolders.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.chbxRemoveCharsInSubfolders.Location = new System.Drawing.Point(541, 151);
+            this.chbxRemoveCharsInSubfolders.Name = "chbxRemoveCharsInSubfolders";
+            this.chbxRemoveCharsInSubfolders.Size = new System.Drawing.Size(199, 20);
+            this.chbxRemoveCharsInSubfolders.TabIndex = 19;
+            this.chbxRemoveCharsInSubfolders.Text = "Стереть в т.ч. в подпапках";
+            this.chbxRemoveCharsInSubfolders.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(927, 12);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(122, 32);
+            this.label4.TabIndex = 17;
+            this.label4.Text = "Стереть символы\r\nв названиях";
+            this.label4.Visible = false;
+            // 
+            // tbxCharsToRemove
+            // 
+            this.tbxCharsToRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxCharsToRemove.Location = new System.Drawing.Point(1055, 12);
+            this.tbxCharsToRemove.MaxLength = 15;
+            this.tbxCharsToRemove.Name = "tbxCharsToRemove";
+            this.tbxCharsToRemove.Size = new System.Drawing.Size(111, 24);
+            this.tbxCharsToRemove.TabIndex = 18;
+            this.tbxCharsToRemove.Text = "´`♫♪éú♥ő";
+            this.tbxCharsToRemove.Visible = false;
             // 
             // chbxReplacePropertiesInSubfolders
             // 
             this.chbxReplacePropertiesInSubfolders.AutoSize = true;
+            this.chbxReplacePropertiesInSubfolders.Checked = true;
+            this.chbxReplacePropertiesInSubfolders.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chbxReplacePropertiesInSubfolders.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.chbxReplacePropertiesInSubfolders.Location = new System.Drawing.Point(609, 151);
+            this.chbxReplacePropertiesInSubfolders.Location = new System.Drawing.Point(749, 151);
             this.chbxReplacePropertiesInSubfolders.Name = "chbxReplacePropertiesInSubfolders";
             this.chbxReplacePropertiesInSubfolders.Size = new System.Drawing.Size(209, 20);
             this.chbxReplacePropertiesInSubfolders.TabIndex = 11;
@@ -202,7 +236,7 @@
             // btnReplaceFileProperties
             // 
             this.btnReplaceFileProperties.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReplaceFileProperties.Location = new System.Drawing.Point(609, 89);
+            this.btnReplaceFileProperties.Location = new System.Drawing.Point(748, 89);
             this.btnReplaceFileProperties.Name = "btnReplaceFileProperties";
             this.btnReplaceFileProperties.Size = new System.Drawing.Size(216, 63);
             this.btnReplaceFileProperties.TabIndex = 10;
@@ -213,9 +247,9 @@
             // btnRenameFiles
             // 
             this.btnRenameFiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRenameFiles.Location = new System.Drawing.Point(394, 105);
+            this.btnRenameFiles.Location = new System.Drawing.Point(371, 124);
             this.btnRenameFiles.Name = "btnRenameFiles";
-            this.btnRenameFiles.Size = new System.Drawing.Size(185, 42);
+            this.btnRenameFiles.Size = new System.Drawing.Size(162, 42);
             this.btnRenameFiles.TabIndex = 9;
             this.btnRenameFiles.Text = "Переименовать файлы";
             this.btnRenameFiles.UseVisualStyleBackColor = true;
@@ -224,9 +258,9 @@
             // btnDeleteHiddenFiles
             // 
             this.btnDeleteHiddenFiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeleteHiddenFiles.Location = new System.Drawing.Point(856, 89);
+            this.btnDeleteHiddenFiles.Location = new System.Drawing.Point(972, 89);
             this.btnDeleteHiddenFiles.Name = "btnDeleteHiddenFiles";
-            this.btnDeleteHiddenFiles.Size = new System.Drawing.Size(216, 63);
+            this.btnDeleteHiddenFiles.Size = new System.Drawing.Size(200, 63);
             this.btnDeleteHiddenFiles.TabIndex = 12;
             this.btnDeleteHiddenFiles.Text = "Удалить все скрытые файлы в выбранной папке";
             this.btnDeleteHiddenFiles.UseVisualStyleBackColor = true;
@@ -235,8 +269,10 @@
             // chbxDeleteFilesInSubfolders
             // 
             this.chbxDeleteFilesInSubfolders.AutoSize = true;
+            this.chbxDeleteFilesInSubfolders.Checked = true;
+            this.chbxDeleteFilesInSubfolders.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chbxDeleteFilesInSubfolders.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.chbxDeleteFilesInSubfolders.Location = new System.Drawing.Point(856, 150);
+            this.chbxDeleteFilesInSubfolders.Location = new System.Drawing.Point(973, 151);
             this.chbxDeleteFilesInSubfolders.Name = "chbxDeleteFilesInSubfolders";
             this.chbxDeleteFilesInSubfolders.Size = new System.Drawing.Size(200, 20);
             this.chbxDeleteFilesInSubfolders.TabIndex = 13;
@@ -247,11 +283,11 @@
             // 
             this.chbxShowHiddenFiles.AutoSize = true;
             this.chbxShowHiddenFiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.chbxShowHiddenFiles.Location = new System.Drawing.Point(429, 63);
+            this.chbxShowHiddenFiles.Location = new System.Drawing.Point(388, 55);
             this.chbxShowHiddenFiles.Name = "chbxShowHiddenFiles";
-            this.chbxShowHiddenFiles.Size = new System.Drawing.Size(212, 20);
+            this.chbxShowHiddenFiles.Size = new System.Drawing.Size(129, 36);
             this.chbxShowHiddenFiles.TabIndex = 5;
-            this.chbxShowHiddenFiles.Text = "Показывать скрытые файлы";
+            this.chbxShowHiddenFiles.Text = "Показывать\r\nскрытые файлы";
             this.chbxShowHiddenFiles.UseVisualStyleBackColor = true;
             this.chbxShowHiddenFiles.CheckedChanged += new System.EventHandler(this.chbxShowHiddenFiles_CheckedChanged);
             // 
@@ -291,7 +327,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(688, 39);
+            this.label3.Location = new System.Drawing.Point(544, 39);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(118, 16);
             this.label3.TabIndex = 14;
@@ -300,7 +336,7 @@
             // nudStartFromNumber
             // 
             this.nudStartFromNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nudStartFromNumber.Location = new System.Drawing.Point(879, 34);
+            this.nudStartFromNumber.Location = new System.Drawing.Point(735, 34);
             this.nudStartFromNumber.Maximum = new decimal(new int[] {
             99999,
             0,
@@ -324,7 +360,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(688, 67);
+            this.label2.Location = new System.Drawing.Point(544, 67);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(189, 16);
             this.label2.TabIndex = 12;
@@ -333,10 +369,10 @@
             // tbxNumberSeparator
             // 
             this.tbxNumberSeparator.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxNumberSeparator.Location = new System.Drawing.Point(879, 62);
+            this.tbxNumberSeparator.Location = new System.Drawing.Point(735, 62);
             this.tbxNumberSeparator.MaxLength = 15;
             this.tbxNumberSeparator.Name = "tbxNumberSeparator";
-            this.tbxNumberSeparator.Size = new System.Drawing.Size(121, 24);
+            this.tbxNumberSeparator.Size = new System.Drawing.Size(68, 24);
             this.tbxNumberSeparator.TabIndex = 16;
             this.tbxNumberSeparator.Text = "-";
             // 
@@ -344,7 +380,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(688, 12);
+            this.label1.Location = new System.Drawing.Point(544, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(137, 16);
             this.label1.TabIndex = 10;
@@ -353,7 +389,7 @@
             // nudDigitsCount
             // 
             this.nudDigitsCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nudDigitsCount.Location = new System.Drawing.Point(879, 7);
+            this.nudDigitsCount.Location = new System.Drawing.Point(735, 7);
             this.nudDigitsCount.Maximum = new decimal(new int[] {
             5,
             0,
@@ -378,7 +414,7 @@
             this.btnSequentualNames.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSequentualNames.Location = new System.Drawing.Point(203, 95);
             this.btnSequentualNames.Name = "btnSequentualNames";
-            this.btnSequentualNames.Size = new System.Drawing.Size(185, 33);
+            this.btnSequentualNames.Size = new System.Drawing.Size(162, 33);
             this.btnSequentualNames.TabIndex = 7;
             this.btnSequentualNames.Text = "Номера по порядку";
             this.btnSequentualNames.UseVisualStyleBackColor = true;
@@ -410,7 +446,7 @@
             this.btnRandomNames.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRandomNames.Location = new System.Drawing.Point(203, 134);
             this.btnRandomNames.Name = "btnRandomNames";
-            this.btnRandomNames.Size = new System.Drawing.Size(185, 33);
+            this.btnRandomNames.Size = new System.Drawing.Size(162, 33);
             this.btnRandomNames.TabIndex = 8;
             this.btnRandomNames.Text = "Случайные номера";
             this.btnRandomNames.UseVisualStyleBackColor = true;
@@ -423,7 +459,7 @@
             this.pnlForTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlForTable.Location = new System.Drawing.Point(0, 0);
             this.pnlForTable.Name = "pnlForTable";
-            this.pnlForTable.Size = new System.Drawing.Size(1084, 455);
+            this.pnlForTable.Size = new System.Drawing.Size(1178, 455);
             this.pnlForTable.TabIndex = 4;
             // 
             // pnlProgress
@@ -448,11 +484,42 @@
             this.tbxProgress.TabIndex = 1;
             this.tbxProgress.Text = "Progress messages for long operations will be here";
             // 
+            // isSelectedDataGridViewCheckBoxColumn
+            // 
+            this.isSelectedDataGridViewCheckBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.isSelectedDataGridViewCheckBoxColumn.DataPropertyName = "IsSelected";
+            this.isSelectedDataGridViewCheckBoxColumn.HeaderText = "Выбрано";
+            this.isSelectedDataGridViewCheckBoxColumn.Name = "isSelectedDataGridViewCheckBoxColumn";
+            this.isSelectedDataGridViewCheckBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.isSelectedDataGridViewCheckBoxColumn.Width = 91;
+            // 
+            // beforeFileNameDataGridViewTextBoxColumn
+            // 
+            this.beforeFileNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.beforeFileNameDataGridViewTextBoxColumn.DataPropertyName = "BeforeFileName";
+            this.beforeFileNameDataGridViewTextBoxColumn.HeaderText = "Исходное имя";
+            this.beforeFileNameDataGridViewTextBoxColumn.Name = "beforeFileNameDataGridViewTextBoxColumn";
+            this.beforeFileNameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.beforeFileNameDataGridViewTextBoxColumn.Width = 115;
+            // 
+            // afterFileNameDataGridViewTextBoxColumn
+            // 
+            this.afterFileNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.afterFileNameDataGridViewTextBoxColumn.DataPropertyName = "AfterFileName";
+            this.afterFileNameDataGridViewTextBoxColumn.HeaderText = "Новое имя";
+            this.afterFileNameDataGridViewTextBoxColumn.Name = "afterFileNameDataGridViewTextBoxColumn";
+            this.afterFileNameDataGridViewTextBoxColumn.Width = 96;
+            // 
+            // bsSourceFiles
+            // 
+            this.bsSourceFiles.AllowNew = false;
+            this.bsSourceFiles.DataSource = typeof(SongSorter.Model.FileModel);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1084, 633);
+            this.ClientSize = new System.Drawing.Size(1178, 633);
             this.Controls.Add(this.pnlForTable);
             this.Controls.Add(this.pnlForControls);
             this.DoubleBuffered = true;
@@ -460,11 +527,10 @@
             this.MinimumSize = new System.Drawing.Size(1040, 605);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Сортировщик .mp3 и других файлов (v.1.1.1) by Igor Cheremushkin, Taganrog, Russia" +
+            this.Text = "Сортировщик .mp3 и других файлов (v.1.1.2) by Igor Cheremushkin, Taganrog, Russia" +
     "";
             this.Shown += new System.EventHandler(this.MainForm_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvFiles)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsSourceFiles)).EndInit();
             this.pnlForControls.ResumeLayout(false);
             this.pnlForControls.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudStartFromNumber)).EndInit();
@@ -472,6 +538,7 @@
             this.pnlForTable.ResumeLayout(false);
             this.pnlProgress.ResumeLayout(false);
             this.pnlProgress.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bsSourceFiles)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -507,6 +574,10 @@
         private System.Windows.Forms.Button btnReplaceFileProperties;
         private System.Windows.Forms.Panel pnlProgress;
         private System.Windows.Forms.TextBox tbxProgress;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox tbxCharsToRemove;
+        private System.Windows.Forms.Button btnRemoveCharsInFileNames;
+        private System.Windows.Forms.CheckBox chbxRemoveCharsInSubfolders;
     }
 }
 

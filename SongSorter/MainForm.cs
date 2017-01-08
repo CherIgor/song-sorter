@@ -18,6 +18,18 @@ namespace SongSorter
         private const string Mp3Extension = ".mp3";
         private const char SortArrowAsc = '↓';
         private const char SortArrowDesc = '↑';
+        private const string PathSeparator = "\\";
+        private const string AllowedFileNameChars =
+            "0123456789" +
+            "abcdefghijklmnopqrstuvwxyz" +
+            "абвгдеёжзийклмнопрстуфхцчшщъыьэюя" +
+            " !@#№&()_-+=[]',.";
+
+        private static Dictionary<Char, Char> FileNameCharsReplaceDict = new Dictionary<char, char>
+        {
+            ['~'] = '-',
+            [';'] = ',',
+        };
 
         public MainForm()
         {
@@ -247,6 +259,25 @@ namespace SongSorter
             OpenSourceFolder();
         }
 
+        private void btnRemoveCharsInFileNames_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(_folderPath))
+            {
+                return;
+            }
+
+            StartProgress();
+            var fileCount = RemoveCharsInFileNames(_folderPath, chbxRemoveCharsInSubfolders.Checked);
+            MessageBox.Show(string.Format("Символы удалены в именах {0} файлов", fileCount), @"Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            StopProgress();
+
+            // To force user reselect a folder
+            _needFolderReopen = true;
+
+            EnableControls();
+            btnSelectSourceFolder.Focus();
+        }
+
         private void dgvFiles_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.Button != MouseButtons.Left || e.ColumnIndex < 0)
@@ -293,6 +324,7 @@ namespace SongSorter
 
             btnReplaceFileProperties.Enabled = chbxReplacePropertiesInSubfolders.Enabled = hasSourceFolderPath && !needFolderReopen;
             btnDeleteHiddenFiles.Enabled = chbxDeleteFilesInSubfolders.Enabled = hasSourceFolderPath && !needFolderReopen;
+            btnRemoveCharsInFileNames.Enabled = chbxRemoveCharsInSubfolders.Enabled = hasSourceFolderPath && !needFolderReopen;
         }
 
         private void EnableRenameButton()
@@ -669,6 +701,120 @@ namespace SongSorter
             }
 
             return result;
+        }
+
+        private int RemoveCharsInFileNames(string folderPath, bool alsoInSubfolders)
+        {
+            Action updateProgress = () =>
+            {
+                UpdateProgressText(string.Format("Стирание символов в именах файлов.{2}Обработано {0} папок, {1} файлов.", _foldersCntProcessed, _filesCntProcessed, Environment.NewLine));
+            };
+
+            var result = 0;
+            try
+            {
+                if (!Directory.Exists(folderPath))
+                {
+                    return result;
+                }
+
+                try
+                {
+                    var files = Directory.GetFiles(folderPath);
+                    foreach (var filePath in files)
+                    {
+                        var pathWithClearedName = GetClearedFileName2(filePath);
+                        if (filePath != pathWithClearedName)
+                        {
+                            try
+                            {
+                                File.Move(filePath, pathWithClearedName);
+                                result++;
+                            }
+                            catch (Exception ex)
+                            {
+                                // Do nothing.
+                            }
+                        }
+
+                        _filesCntProcessed++;
+                        updateProgress();
+                    }
+                }
+                catch
+                {
+                    // Do nothing.
+                }
+
+                _foldersCntProcessed++;
+                updateProgress();
+
+                if (alsoInSubfolders)
+                {
+                    try
+                    {
+                        var dirs = Directory.GetDirectories(folderPath);
+                        foreach (var dir in dirs)
+                        {
+                            try
+                            {
+                                result += RemoveCharsInFileNames(dir, true);
+                            }
+                            catch
+                            {
+                                // Do nothing.
+                            }
+                        }
+                    }
+                    catch
+                    {
+                        // Do nothing.
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(string.Format("Неожиданная ошибка: {0}", ex.Message), @"Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return result;
+        }
+
+        private string GetClearedFileName1(string filePath)
+        {
+            var pathParts = filePath.Split(PathSeparator.ToCharArray());
+            var sb = new StringBuilder(pathParts.Last());
+            foreach (var ch in tbxCharsToRemove.Text)
+            {
+                sb = sb.Replace(ch.ToString(), "");
+            }
+
+            pathParts[pathParts.Length - 1] = sb.ToString();
+            var clearedPath = string.Join(PathSeparator, pathParts);
+            return clearedPath;
+        }
+
+        private string GetClearedFileName2(string filePath)
+        {
+            var pathParts = filePath.Split(PathSeparator.ToCharArray());
+            var lastPart = pathParts.Last();
+            var sb = new StringBuilder(lastPart.Length);
+
+            foreach (var ch in lastPart)
+            {
+                if (AllowedFileNameChars.Contains(ch.ToString().ToLower()))
+                {
+                    sb.Append(ch);
+                }
+                else if (FileNameCharsReplaceDict.ContainsKey(ch))
+                {
+                    sb.Append(FileNameCharsReplaceDict[ch]);
+                }
+            }
+
+            pathParts[pathParts.Length - 1] = sb.ToString();
+            var clearedPath = string.Join(PathSeparator, pathParts);
+            return clearedPath;
         }
 
         private void StartProgress()
