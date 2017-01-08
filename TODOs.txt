@@ -6,8 +6,9 @@ TODO list tasks examples:
 ? Do we need to do this task?
 
 TODO list:
-
+--done:
++ Record demo video about the application use cases.
+--todo:
   Set icon "MP3_2.ico" to resulting .exe file.
-  Record demo video about the application use cases.
   Create .docx documentation/user guide.
   
