@@ -181,7 +181,7 @@
             this.btnRemoveCharsInFileNames.Name = "btnRemoveCharsInFileNames";
             this.btnRemoveCharsInFileNames.Size = new System.Drawing.Size(200, 63);
             this.btnRemoveCharsInFileNames.TabIndex = 18;
-            this.btnRemoveCharsInFileNames.Text = "Стереть символы в названиях файлов в выбранной папке";
+            this.btnRemoveCharsInFileNames.Text = "Стереть ♫♥ú... символы в названиях файлов в выбранной папке";
             this.btnRemoveCharsInFileNames.UseVisualStyleBackColor = true;
             this.btnRemoveCharsInFileNames.Click += new System.EventHandler(this.btnRemoveCharsInFileNames_Click);
             // 
@@ -360,7 +360,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(595, 58);
+            this.label2.Location = new System.Drawing.Point(595, 56);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(99, 32);
             this.label2.TabIndex = 14;
