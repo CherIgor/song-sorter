@@ -180,7 +180,7 @@
             this.btnRemoveCharsInFileNames.Location = new System.Drawing.Point(540, 89);
             this.btnRemoveCharsInFileNames.Name = "btnRemoveCharsInFileNames";
             this.btnRemoveCharsInFileNames.Size = new System.Drawing.Size(200, 63);
-            this.btnRemoveCharsInFileNames.TabIndex = 20;
+            this.btnRemoveCharsInFileNames.TabIndex = 18;
             this.btnRemoveCharsInFileNames.Text = "Стереть символы в названиях файлов в выбранной папке";
             this.btnRemoveCharsInFileNames.UseVisualStyleBackColor = true;
             this.btnRemoveCharsInFileNames.Click += new System.EventHandler(this.btnRemoveCharsInFileNames_Click);
@@ -202,21 +202,21 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(927, 12);
+            this.label4.Location = new System.Drawing.Point(803, 14);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(122, 32);
-            this.label4.TabIndex = 17;
+            this.label4.TabIndex = 16;
             this.label4.Text = "Стереть символы\r\nв названиях";
             this.label4.Visible = false;
             // 
             // tbxCharsToRemove
             // 
             this.tbxCharsToRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxCharsToRemove.Location = new System.Drawing.Point(1055, 12);
+            this.tbxCharsToRemove.Location = new System.Drawing.Point(931, 14);
             this.tbxCharsToRemove.MaxLength = 15;
             this.tbxCharsToRemove.Name = "tbxCharsToRemove";
             this.tbxCharsToRemove.Size = new System.Drawing.Size(111, 24);
-            this.tbxCharsToRemove.TabIndex = 18;
+            this.tbxCharsToRemove.TabIndex = 17;
             this.tbxCharsToRemove.Text = "´`♫♪éú♥ő";
             this.tbxCharsToRemove.Visible = false;
             // 
@@ -229,7 +229,7 @@
             this.chbxReplacePropertiesInSubfolders.Location = new System.Drawing.Point(749, 151);
             this.chbxReplacePropertiesInSubfolders.Name = "chbxReplacePropertiesInSubfolders";
             this.chbxReplacePropertiesInSubfolders.Size = new System.Drawing.Size(209, 20);
-            this.chbxReplacePropertiesInSubfolders.TabIndex = 11;
+            this.chbxReplacePropertiesInSubfolders.TabIndex = 21;
             this.chbxReplacePropertiesInSubfolders.Text = "Заменить в т.ч. в подпапках";
             this.chbxReplacePropertiesInSubfolders.UseVisualStyleBackColor = true;
             // 
@@ -239,7 +239,7 @@
             this.btnReplaceFileProperties.Location = new System.Drawing.Point(748, 89);
             this.btnReplaceFileProperties.Name = "btnReplaceFileProperties";
             this.btnReplaceFileProperties.Size = new System.Drawing.Size(216, 63);
-            this.btnReplaceFileProperties.TabIndex = 10;
+            this.btnReplaceFileProperties.TabIndex = 20;
             this.btnReplaceFileProperties.Text = "Заменить заголовок в свойствах на имя файла в выбранной папке";
             this.btnReplaceFileProperties.UseVisualStyleBackColor = true;
             this.btnReplaceFileProperties.Click += new System.EventHandler(this.btnReplaceFileProperties_Click);
@@ -247,9 +247,9 @@
             // btnRenameFiles
             // 
             this.btnRenameFiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRenameFiles.Location = new System.Drawing.Point(371, 124);
+            this.btnRenameFiles.Location = new System.Drawing.Point(397, 124);
             this.btnRenameFiles.Name = "btnRenameFiles";
-            this.btnRenameFiles.Size = new System.Drawing.Size(162, 42);
+            this.btnRenameFiles.Size = new System.Drawing.Size(137, 42);
             this.btnRenameFiles.TabIndex = 9;
             this.btnRenameFiles.Text = "Переименовать файлы";
             this.btnRenameFiles.UseVisualStyleBackColor = true;
@@ -261,7 +261,7 @@
             this.btnDeleteHiddenFiles.Location = new System.Drawing.Point(972, 89);
             this.btnDeleteHiddenFiles.Name = "btnDeleteHiddenFiles";
             this.btnDeleteHiddenFiles.Size = new System.Drawing.Size(200, 63);
-            this.btnDeleteHiddenFiles.TabIndex = 12;
+            this.btnDeleteHiddenFiles.TabIndex = 23;
             this.btnDeleteHiddenFiles.Text = "Удалить все скрытые файлы в выбранной папке";
             this.btnDeleteHiddenFiles.UseVisualStyleBackColor = true;
             this.btnDeleteHiddenFiles.Click += new System.EventHandler(this.btnDeleteHiddenFiles_Click);
@@ -275,7 +275,7 @@
             this.chbxDeleteFilesInSubfolders.Location = new System.Drawing.Point(973, 151);
             this.chbxDeleteFilesInSubfolders.Name = "chbxDeleteFilesInSubfolders";
             this.chbxDeleteFilesInSubfolders.Size = new System.Drawing.Size(200, 20);
-            this.chbxDeleteFilesInSubfolders.TabIndex = 13;
+            this.chbxDeleteFilesInSubfolders.TabIndex = 0;
             this.chbxDeleteFilesInSubfolders.Text = "Удалить в т.ч. в подпапках";
             this.chbxDeleteFilesInSubfolders.UseVisualStyleBackColor = true;
             // 
@@ -283,7 +283,7 @@
             // 
             this.chbxShowHiddenFiles.AutoSize = true;
             this.chbxShowHiddenFiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.chbxShowHiddenFiles.Location = new System.Drawing.Point(388, 55);
+            this.chbxShowHiddenFiles.Location = new System.Drawing.Point(12, 133);
             this.chbxShowHiddenFiles.Name = "chbxShowHiddenFiles";
             this.chbxShowHiddenFiles.Size = new System.Drawing.Size(129, 36);
             this.chbxShowHiddenFiles.TabIndex = 5;
@@ -295,7 +295,7 @@
             // 
             this.lblCheckedFilesCount.AutoSize = true;
             this.lblCheckedFilesCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCheckedFilesCount.Location = new System.Drawing.Point(200, 67);
+            this.lblCheckedFilesCount.Location = new System.Drawing.Point(12, 106);
             this.lblCheckedFilesCount.Name = "lblCheckedFilesCount";
             this.lblCheckedFilesCount.Size = new System.Drawing.Size(165, 16);
             this.lblCheckedFilesCount.TabIndex = 4;
@@ -306,8 +306,8 @@
             this.btnCheckAllOrNone.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCheckAllOrNone.Location = new System.Drawing.Point(12, 57);
             this.btnCheckAllOrNone.Name = "btnCheckAllOrNone";
-            this.btnCheckAllOrNone.Size = new System.Drawing.Size(185, 30);
-            this.btnCheckAllOrNone.TabIndex = 3;
+            this.btnCheckAllOrNone.Size = new System.Drawing.Size(140, 43);
+            this.btnCheckAllOrNone.TabIndex = 1;
             this.btnCheckAllOrNone.Text = "Выбрать все / ничего";
             this.btnCheckAllOrNone.UseVisualStyleBackColor = true;
             this.btnCheckAllOrNone.Click += new System.EventHandler(this.btnCheckAllOrNone_Click);
@@ -316,10 +316,10 @@
             // 
             this.btnOpenSourceFolder.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOpenSourceFolder.Image = ((System.Drawing.Image)(resources.GetObject("btnOpenSourceFolder.Image")));
-            this.btnOpenSourceFolder.Location = new System.Drawing.Point(158, 9);
+            this.btnOpenSourceFolder.Location = new System.Drawing.Point(158, 57);
             this.btnOpenSourceFolder.Name = "btnOpenSourceFolder";
-            this.btnOpenSourceFolder.Size = new System.Drawing.Size(58, 42);
-            this.btnOpenSourceFolder.TabIndex = 1;
+            this.btnOpenSourceFolder.Size = new System.Drawing.Size(58, 43);
+            this.btnOpenSourceFolder.TabIndex = 2;
             this.btnOpenSourceFolder.UseVisualStyleBackColor = true;
             this.btnOpenSourceFolder.Click += new System.EventHandler(this.btnOpenSourceFolder_Click);
             // 
@@ -327,16 +327,16 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(544, 39);
+            this.label3.Location = new System.Drawing.Point(595, 36);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(118, 16);
-            this.label3.TabIndex = 14;
+            this.label3.TabIndex = 22;
             this.label3.Text = "Начать с номера";
             // 
             // nudStartFromNumber
             // 
             this.nudStartFromNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nudStartFromNumber.Location = new System.Drawing.Point(735, 34);
+            this.nudStartFromNumber.Location = new System.Drawing.Point(715, 31);
             this.nudStartFromNumber.Maximum = new decimal(new int[] {
             99999,
             0,
@@ -349,7 +349,7 @@
             0});
             this.nudStartFromNumber.Name = "nudStartFromNumber";
             this.nudStartFromNumber.Size = new System.Drawing.Size(68, 24);
-            this.nudStartFromNumber.TabIndex = 15;
+            this.nudStartFromNumber.TabIndex = 13;
             this.nudStartFromNumber.Value = new decimal(new int[] {
             1,
             0,
@@ -360,36 +360,36 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(544, 67);
+            this.label2.Location = new System.Drawing.Point(595, 58);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(189, 16);
-            this.label2.TabIndex = 12;
-            this.label2.Text = "Разделитель № и названия";
+            this.label2.Size = new System.Drawing.Size(99, 32);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "Разделитель\r\n№ и названия";
             // 
             // tbxNumberSeparator
             // 
             this.tbxNumberSeparator.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxNumberSeparator.Location = new System.Drawing.Point(735, 62);
+            this.tbxNumberSeparator.Location = new System.Drawing.Point(715, 59);
             this.tbxNumberSeparator.MaxLength = 15;
             this.tbxNumberSeparator.Name = "tbxNumberSeparator";
             this.tbxNumberSeparator.Size = new System.Drawing.Size(68, 24);
-            this.tbxNumberSeparator.TabIndex = 16;
+            this.tbxNumberSeparator.TabIndex = 15;
             this.tbxNumberSeparator.Text = "-";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(544, 12);
+            this.label1.Location = new System.Drawing.Point(595, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(137, 16);
+            this.label1.Size = new System.Drawing.Size(107, 16);
             this.label1.TabIndex = 10;
-            this.label1.Text = "Символов в номере";
+            this.label1.Text = "Цифр в номере";
             // 
             // nudDigitsCount
             // 
             this.nudDigitsCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nudDigitsCount.Location = new System.Drawing.Point(735, 7);
+            this.nudDigitsCount.Location = new System.Drawing.Point(715, 4);
             this.nudDigitsCount.Maximum = new decimal(new int[] {
             5,
             0,
@@ -402,7 +402,7 @@
             0});
             this.nudDigitsCount.Name = "nudDigitsCount";
             this.nudDigitsCount.Size = new System.Drawing.Size(68, 24);
-            this.nudDigitsCount.TabIndex = 14;
+            this.nudDigitsCount.TabIndex = 11;
             this.nudDigitsCount.Value = new decimal(new int[] {
             3,
             0,
@@ -412,7 +412,7 @@
             // btnSequentualNames
             // 
             this.btnSequentualNames.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSequentualNames.Location = new System.Drawing.Point(203, 95);
+            this.btnSequentualNames.Location = new System.Drawing.Point(232, 94);
             this.btnSequentualNames.Name = "btnSequentualNames";
             this.btnSequentualNames.Size = new System.Drawing.Size(162, 33);
             this.btnSequentualNames.TabIndex = 7;
@@ -423,9 +423,9 @@
             // btnClearNames
             // 
             this.btnClearNames.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClearNames.Location = new System.Drawing.Point(12, 110);
+            this.btnClearNames.Location = new System.Drawing.Point(232, 56);
             this.btnClearNames.Name = "btnClearNames";
-            this.btnClearNames.Size = new System.Drawing.Size(185, 33);
+            this.btnClearNames.Size = new System.Drawing.Size(162, 33);
             this.btnClearNames.TabIndex = 6;
             this.btnClearNames.Text = "Стереть номера";
             this.btnClearNames.UseVisualStyleBackColor = true;
@@ -435,16 +435,16 @@
             // 
             this.lblSourceFolder.AutoSize = true;
             this.lblSourceFolder.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSourceFolder.Location = new System.Drawing.Point(219, 24);
+            this.lblSourceFolder.Location = new System.Drawing.Point(158, 12);
             this.lblSourceFolder.Name = "lblSourceFolder";
-            this.lblSourceFolder.Size = new System.Drawing.Size(128, 16);
-            this.lblSourceFolder.TabIndex = 2;
-            this.lblSourceFolder.Text = "Папка не выбрана";
+            this.lblSourceFolder.Size = new System.Drawing.Size(68, 32);
+            this.lblSourceFolder.TabIndex = 3;
+            this.lblSourceFolder.Text = "Папка не\r\nвыбрана";
             // 
             // btnRandomNames
             // 
             this.btnRandomNames.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRandomNames.Location = new System.Drawing.Point(203, 134);
+            this.btnRandomNames.Location = new System.Drawing.Point(232, 133);
             this.btnRandomNames.Name = "btnRandomNames";
             this.btnRandomNames.Size = new System.Drawing.Size(162, 33);
             this.btnRandomNames.TabIndex = 8;
@@ -481,7 +481,7 @@
             this.tbxProgress.Name = "tbxProgress";
             this.tbxProgress.ReadOnly = true;
             this.tbxProgress.Size = new System.Drawing.Size(445, 98);
-            this.tbxProgress.TabIndex = 1;
+            this.tbxProgress.TabIndex = 0;
             this.tbxProgress.Text = "Progress messages for long operations will be here";
             // 
             // isSelectedDataGridViewCheckBoxColumn
@@ -524,10 +524,10 @@
             this.Controls.Add(this.pnlForControls);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(1040, 605);
+            this.MinimumSize = new System.Drawing.Size(1000, 500);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Сортировщик .mp3 и других файлов (v.1.1.2) by Igor Cheremushkin, Taganrog, Russia" +
+            this.Text = "Сортировщик .mp3 и других файлов (v.1.1.3) by Igor Cheremushkin, Taganrog, Russia" +
     "";
             this.Shown += new System.EventHandler(this.MainForm_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvFiles)).EndInit();
